@@ -1,0 +1,30 @@
+### Headers settings
+company: MyCompany
+
+### Xcode project settings
+project_name: WeatherService
+xcodeproj_path: WeatherService.xcodeproj
+
+### Code generation settings section
+# The main project target name
+project_target: WeatherService
+
+# The file path for new modules
+project_file_path: WeatherService/Modules
+
+# The Xcode group path to new modules
+project_group_path: WeatherService/Modules
+
+### Tests generation settings section
+# The tests target name
+test_target: WeatherServiceTests
+
+# The file path for new tests
+test_file_path: WeatherServiceTests/Modules
+
+# The Xcode group path to new tests
+test_group_path: WeatherServiceTests/Modules
+
+### Templates
+templates:
+- {name: swifty_mvp}

@@ -1,0 +1,21 @@
+# Template information section
+name: "swifty_mvp"
+summary: "Swift MVP module template with UIViewController playing as a View."
+author: "Serge Sukhanov"
+version: "1.0.0"
+license: "MIT"
+
+# The declarations for code files
+code_files:
+
+- {name: ViewPresenterProtocol.swift,  path: Code/viewpresenterprotocol.swift.liquid}
+- {name: Presenter.swift,  path: Code/presenter.swift.liquid}
+- {name: ViewController.swift,  path: Code/viewcontroller.swift.liquid}
+- {name: ViewController.storyboard,  path: Code/viewcontroller.storyboard.liquid}
+- {name: Configurator.swift,  path: Code/configurator.swift.liquid}
+
+# The declarations for test files
+test_files:
+
+- {name: ConfiguratorTests.swift, path: Tests/configurator_tests.swift.liquid}
+- {name: PresenterTests.swift, path: Tests/presenter_tests.swift.liquid}
