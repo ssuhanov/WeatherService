@@ -11,8 +11,7 @@ import UIKit
 class MainViewController: UITableViewController, MainViewProtocol {
 
     var presenter: MainPresenterProtocol!
-//    var weatherArray = [CityWeather]()
-    var weatherArray = [CityWeather(), CityWeather(), CityWeather()]
+    var weatherArray = [CityWeather]()
     
     override func awakeFromNib() {
         super.awakeFromNib()

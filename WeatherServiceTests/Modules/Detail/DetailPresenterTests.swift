@@ -23,6 +23,18 @@ class DetailPresenterTest: XCTestCase {
 
     class MockViewController: DetailViewProtocol {
         var presenterConfig: DetailPresenterConfig!
+        
+        func showCity(_ city: String?) {
+            
+        }
+        
+        func showTemperature(_ temperature: String?) {
+            
+        }
+        
+        func showWeatherType(_ weatherType: String?) {
+            
+        }
 
     }
 }

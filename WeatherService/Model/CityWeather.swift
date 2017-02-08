@@ -8,8 +8,6 @@
 
 import Foundation
 
-typealias JSONDictonary = [String : AnyObject]
-
 class CityWeather {
     
     var city: String
@@ -19,11 +17,21 @@ class CityWeather {
     }
     var weatherType: String
     
-//    init(with dictResult: JSONDictonary) {
-    init() {
-        self.city = "London"
-        self.temperature = 3.5
-        self.weatherType = "sunny"
+    init?(from dictResult: JSONDictonary) {
+        guard let cityName = dictResult["name"] as? String else {
+            return nil
+        }
+        
+        guard let main = dictResult["main"] as? JSONDictonary, let temp = main["temp"] as? Double else {
+            return nil
+        }
+        
+        let weather = dictResult["weather"] as? [JSONDictonary]
+        let description = weather?.first?["description"] as? String
+        
+        self.city = cityName
+        self.temperature = temp
+        self.weatherType = description ?? ""
     }
     
 }
