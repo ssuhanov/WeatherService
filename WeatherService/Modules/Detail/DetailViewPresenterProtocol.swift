@@ -9,10 +9,13 @@
 import Foundation
 
 protocol DetailPresenterProtocol {
-
+    func handleCityWeather(_ cityWeather: CityWeather)
 }
 
 protocol DetailViewProtocol: class {
     var presenterConfig: DetailPresenterConfig! { get set }
     
+    func showCity(_ city: String?)
+    func showTemperature(_ temperature: String?)
+    func showWeatherType(_ weatherType: String?)
 }

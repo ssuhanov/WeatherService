@@ -14,6 +14,9 @@ class CityWeather {
     
     var city: String
     var temperature: Double
+    var temperatureDescription: String {
+        return "\(temperature>0 ? "+" : "")\(String(format: "%.1f", temperature))"
+    }
     var weatherType: String
     
 //    init(with dictResult: JSONDictonary) {

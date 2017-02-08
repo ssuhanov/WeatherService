@@ -28,21 +28,15 @@ class MainViewController: UITableViewController, MainViewProtocol {
         configureUI()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationItem.title = "Weather"
-    }
-    
     // MARK: - UI Configuration
     
     func configureUI() {
+        navigationItem.title = "Weather"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
     }
-    
 
     // MARK: - UITableViewDataSource
 

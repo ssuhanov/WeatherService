@@ -20,7 +20,7 @@ class MainPresenter: MainPresenterProtocol {
     
     func handleCityWeather(_ cityWeather: CityWeather) {
         view.showDetailView(DetailViewController.storyboardInstance()) { presenter in
-            // do something in presenter with cityWeather
+            presenter.handleCityWeather(cityWeather)
         }
     }
     

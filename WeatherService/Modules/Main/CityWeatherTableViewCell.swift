@@ -16,7 +16,7 @@ class CityWeatherTableViewCell: UITableViewCell {
     
     func configureCell(with cityWeather: CityWeather) {
         cityLabel.text = cityWeather.city
-        temperatureLabel.text = String(format: "%.1f", cityWeather.temperature)
+        temperatureLabel.text = cityWeather.temperatureDescription
         weatherTypeLabel.text = cityWeather.weatherType
     }
 

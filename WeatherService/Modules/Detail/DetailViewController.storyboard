@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lpd-Ub-G89">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lpd-Ub-G89">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,8 +19,41 @@
                     <view key="view" contentMode="scaleToFill" id="JYY-qD-CQ8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="London" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RcY-Ch-ndH">
+                                <rect key="frame" x="116" y="206.5" width="143" height="54"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="45"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Raw-29-Pol">
+                                <rect key="frame" x="161" y="306" width="53" height="54"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="45"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunny" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ud-hI-iMf">
+                                <rect key="frame" x="163" y="423" width="48" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Raw-29-Pol" firstAttribute="centerX" secondItem="JYY-qD-CQ8" secondAttribute="centerX" id="DfA-kO-HP3"/>
+                            <constraint firstItem="0ud-hI-iMf" firstAttribute="centerY" secondItem="JYY-qD-CQ8" secondAttribute="centerY" constant="100" id="OML-Hp-zkS"/>
+                            <constraint firstItem="0ud-hI-iMf" firstAttribute="centerX" secondItem="JYY-qD-CQ8" secondAttribute="centerX" id="Sia-Jq-nXs"/>
+                            <constraint firstItem="RcY-Ch-ndH" firstAttribute="centerY" secondItem="JYY-qD-CQ8" secondAttribute="centerY" constant="-100" id="asL-aN-d5P"/>
+                            <constraint firstItem="RcY-Ch-ndH" firstAttribute="centerX" secondItem="JYY-qD-CQ8" secondAttribute="centerX" id="h4Q-Tx-kaB"/>
+                            <constraint firstItem="Raw-29-Pol" firstAttribute="centerY" secondItem="JYY-qD-CQ8" secondAttribute="centerY" id="nHA-PG-rVO"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cityLabel" destination="RcY-Ch-ndH" id="kQZ-PO-8xS"/>
+                        <outlet property="temperatureLabel" destination="Raw-29-Pol" id="Rus-P8-2IK"/>
+                        <outlet property="weatherTypeLabel" destination="0ud-hI-iMf" id="NRh-hB-E5f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wK5-bZ-hJc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

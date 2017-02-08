@@ -14,4 +14,9 @@ class DetailPresenter: DetailPresenterProtocol {
 
     // MARK: - DetailPresenterProtocol
 
+    func handleCityWeather(_ cityWeather: CityWeather) {
+        view.showCity(cityWeather.city)
+        view.showTemperature(cityWeather.temperatureDescription)
+        view.showWeatherType(cityWeather.weatherType)
+    }
 }
