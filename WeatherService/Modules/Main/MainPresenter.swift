@@ -15,7 +15,13 @@ class MainPresenter: MainPresenterProtocol {
     // MARK: - MainPresenterProtocol
     
     func getData() {
-        
+        // get data from server here and call view.showData(...)
+    }
+    
+    func handleCityWeather(_ cityWeather: CityWeather) {
+        view.showDetailView(DetailViewController.storyboardInstance()) { presenter in
+            // do something in presenter with cityWeather
+        }
     }
     
 }

@@ -1,5 +1,5 @@
 //
-//  MainPresenterTests.swift
+//  DetailPresenterTests.swift
 //  WeatherService
 //
 //  Created by Serge Sukhanov on 08/02/2017.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import WeatherService
 
-class MainPresenterTest: XCTestCase {
+class DetailPresenterTest: XCTestCase {
 
     override func setUp() {
         super.setUp()
@@ -21,15 +21,8 @@ class MainPresenterTest: XCTestCase {
         super.tearDown()
     }
 
-    class MockViewController: MainViewProtocol {
-        
-        func showData(with weatherArray: [CityWeather]) {
-            
-        }
-        
-        func showDetailView(_ detailView: DetailViewProtocol, with config: @escaping DetailPresenterConfig) {
-            
-        }
+    class MockViewController: DetailViewProtocol {
+        var presenterConfig: DetailPresenterConfig!
 
     }
 }

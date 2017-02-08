@@ -55,6 +55,13 @@ class MainViewController: UITableViewController, MainViewProtocol {
         cell.configureCell(with: weatherArray[indexPath.row])
         return cell
     }
+    
+    // MARK: - UITableViewDelegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        presenter.handleCityWeather(weatherArray[indexPath.row])
+    }
 
     // MARK: - MainViewProtocol
     
@@ -62,6 +69,15 @@ class MainViewController: UITableViewController, MainViewProtocol {
         self.weatherArray = weatherArray
         DispatchQueue.main.async { [weak self] in
             self?.tableView.reloadData()
+        }
+    }
+    
+    func showDetailView(_ detailView: DetailViewProtocol, with config: @escaping DetailPresenterConfig) {
+        detailView.presenterConfig = config
+        if let detailView = detailView as? UIViewController {
+            DispatchQueue.main.async { [weak self] in
+                self?.navigationController?.pushViewController(detailView, animated: true)
+            }
         }
     }
     
