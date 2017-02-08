@@ -13,5 +13,9 @@ class MainPresenter: MainPresenterProtocol {
     weak var view: MainViewProtocol!
 
     // MARK: - MainPresenterProtocol
-
+    
+    func getData() {
+        
+    }
+    
 }

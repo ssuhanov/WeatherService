@@ -22,6 +22,10 @@ class MainPresenterTest: XCTestCase {
     }
 
     class MockViewController: MainViewProtocol {
+        
+        func showData(with weatherArray: [CityWeather]) {
+            
+        }
 
     }
 }

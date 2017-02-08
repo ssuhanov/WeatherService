@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -12,18 +13,51 @@
         <scene sceneID="dpL-EO-bJW">
             <objects>
                 <tableViewController id="C4B-Rb-v6W" customClass="MainViewController" customModule="WeatherService" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Vnz-Wq-IeZ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="Vnz-Wq-IeZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="GDa-jx-jB7">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityWeatherCell" id="GDa-jx-jB7" customClass="CityWeatherTableViewCell" customModule="WeatherService" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GDa-jx-jB7" id="hcc-cT-yB8">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="London" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dq4-TI-NHg">
+                                            <rect key="frame" x="8" y="21" width="97" height="36"/>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jyk-b5-Hqe">
+                                            <rect key="frame" x="332" y="12" width="35" height="36"/>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunny" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbe-Sa-x7G">
+                                            <rect key="frame" x="319" y="50" width="48" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="pbe-Sa-x7G" firstAttribute="trailing" secondItem="hcc-cT-yB8" secondAttribute="trailingMargin" id="FM6-yP-EuE"/>
+                                        <constraint firstItem="Jyk-b5-Hqe" firstAttribute="trailing" secondItem="hcc-cT-yB8" secondAttribute="trailingMargin" id="G8b-dy-KkQ"/>
+                                        <constraint firstItem="pbe-Sa-x7G" firstAttribute="bottom" secondItem="hcc-cT-yB8" secondAttribute="bottomMargin" id="GVz-jP-E83"/>
+                                        <constraint firstItem="Dq4-TI-NHg" firstAttribute="centerY" secondItem="hcc-cT-yB8" secondAttribute="centerY" id="K4w-zh-D6H"/>
+                                        <constraint firstItem="Dq4-TI-NHg" firstAttribute="leading" secondItem="hcc-cT-yB8" secondAttribute="leadingMargin" id="VgB-4g-Zhg"/>
+                                        <constraint firstItem="Jyk-b5-Hqe" firstAttribute="centerY" secondItem="hcc-cT-yB8" secondAttribute="centerY" constant="-10" id="aQi-jK-IxT"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cityLabel" destination="Dq4-TI-NHg" id="Bk3-W9-sep"/>
+                                    <outlet property="temperatureLabel" destination="Jyk-b5-Hqe" id="63Y-Kd-cJv"/>
+                                    <outlet property="weatherTypeLabel" destination="pbe-Sa-x7G" id="ng5-aG-VWI"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

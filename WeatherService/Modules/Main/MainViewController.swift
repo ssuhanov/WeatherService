@@ -11,6 +11,8 @@ import UIKit
 class MainViewController: UITableViewController, MainViewProtocol {
 
     var presenter: MainPresenterProtocol!
+//    var weatherArray = [CityWeather]()
+    var weatherArray = [CityWeather(), CityWeather(), CityWeather()]
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,13 +24,8 @@ class MainViewController: UITableViewController, MainViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        presenter.getData()
         configureUI()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,26 +46,23 @@ class MainViewController: UITableViewController, MainViewProtocol {
 
     // MARK: - UITableViewDataSource
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return weatherArray.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CityWeatherCell", for: indexPath) as! CityWeatherTableViewCell
+        cell.configureCell(with: weatherArray[indexPath.row])
         return cell
     }
-    */
 
     // MARK: - MainViewProtocol
+    
+    func showData(with weatherArray: [CityWeather]) {
+        self.weatherArray = weatherArray
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
     
 }

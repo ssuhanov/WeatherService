@@ -9,9 +9,9 @@
 import Foundation
 
 protocol MainPresenterProtocol {
-
+    func getData()
 }
 
 protocol MainViewProtocol: class {
-
+    func showData(with weatherArray: [CityWeather])
 }
