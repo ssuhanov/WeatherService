@@ -3,6 +3,7 @@ language: objective-c
 branches:
  only:
  - master
+ - dev
 
 xcode_project: WeatherService.xcodeproj
 xcode_scheme: WeatherServiceTests
