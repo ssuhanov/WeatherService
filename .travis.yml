@@ -1,13 +1,11 @@
-language: objective-c
+language: swift
+osx_image: xcode8.3
+os: osx
 
 branches:
  only:
  - master
-
-xcode_project: WeatherService.xcodeproj
-xcode_scheme: WeatherService
-osx_image: xcode8.3
-xcode_sdk: iphonesimulator10.3
+ - dev
 
 script:
-- xcodebuild clean build test -project WeatherService.xcodeproj -scheme WeatherService
+- xcodebuild -project WeatherService.xcodeproj -scheme WeatherService -destination 'platform=iOS Simulator,name=iPhoneSE,OS=10.3' clean build test | xcpretty
