@@ -8,4 +8,4 @@ branches:
  - dev
 
 script:
-- xcodebuild -project WeatherService.xcodeproj -scheme WeatherService -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.3' clean build test | xcpretty
+- xcodebuild -project WeatherService.xcodeproj -scheme WeatherService -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.3.1' clean build test | xcpretty
