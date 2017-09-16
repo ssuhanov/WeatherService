@@ -5,9 +5,9 @@ branches:
  - master
 
 xcode_project: WeatherService.xcodeproj
-xcode_scheme: WeatherServiceTests
+xcode_scheme: WeatherService
 osx_image: xcode8.3
 xcode_sdk: iphonesimulator10.3
 
 script:
-- xcodebuild clean build test -project WeatherService.xcodeproj -scheme WeatherServiceTests
+- xcodebuild clean build test -project WeatherService.xcodeproj -scheme WeatherService
