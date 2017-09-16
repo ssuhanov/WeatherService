@@ -23,8 +23,8 @@ class CityWeatherTests: XCTestCase {
     
     func testNameUpdatesCorrectly() {
         self.instance = CityWeather(from: self.dictResultWithName)
-        XCTAssertEqual(self.instance?.city, "moncton", "city name should be \"Moncton\"")
-        XCTAssertEqual(self.instance?.temperature, 24.5, "temperature should be 23.5")
+        XCTAssertEqual(self.instance?.city, "Moncton", "city name should be \"Moncton\"")
+        XCTAssertEqual(self.instance?.temperature, 23.5, "temperature should be 23.5")
     }
     
     func testEmptyNameReturnsNil() {
