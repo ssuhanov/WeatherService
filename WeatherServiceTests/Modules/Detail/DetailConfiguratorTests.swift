@@ -24,10 +24,9 @@ class DetailConfiguratorTests: XCTestCase {
     func testConfigureModuleForViewController() {
         //given
         let view = DetailViewControllerMock()
-        let configurator = DetailConfigurator()
 
         //when
-        configurator.configure(view)
+        Configurator.configure(view: view, presenter: DetailPresenter())
 
         //then
         XCTAssertNotNil(view.presenter, "presenter is nil after configuration")

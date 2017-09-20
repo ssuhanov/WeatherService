@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias DetailPresenterConfig = (DetailPresenterProtocol) -> Void
+typealias DetailPresenterConfig = (DetailPresenter?) -> Void
 
 protocol MainPresenterProtocol {
     func getData()
