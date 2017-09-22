@@ -24,10 +24,9 @@ class MainConfiguratorTests: XCTestCase {
     func testConfigureModuleForViewController() {
         //given
         let view = MainViewControllerMock()
-        let configurator = MainConfigurator()
 
         //when
-        configurator.configure(view)
+        Configurator.configure(view: view, presenter: MainPresenter())
 
         //then
         XCTAssertNotNil(view.presenter, "presenter is nil after configuration")

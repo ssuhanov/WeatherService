@@ -10,20 +10,22 @@ import UIKit
 
 class MainViewController: UITableViewController, MainViewProtocol {
 
-    var presenter: MainPresenterProtocol!
+    var presenter: Presenter!
+    var mainPresenter: MainPresenter? {
+        return presenter as? MainPresenter
+    }
     var weatherArray = [CityWeather]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        let configurator = MainConfigurator()
-        configurator.configure(self)
+        Configurator.configure(view: self, presenter: MainPresenter())
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        presenter.getData()
+        mainPresenter?.getData()
         configureUI()
     }
     
@@ -53,7 +55,7 @@ class MainViewController: UITableViewController, MainViewProtocol {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        presenter.handleCityWeather(weatherArray[indexPath.row])
+        mainPresenter?.handleCityWeather(weatherArray[indexPath.row])
     }
 
     // MARK: - MainViewProtocol

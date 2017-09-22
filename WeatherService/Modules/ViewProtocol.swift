@@ -1,5 +1,5 @@
 //
-//  View.swift
+//  ViewProtocol.swift
 //  WeatherService
 //
 //  Created by Serge Sukhanov on 9/20/17.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class View: UIViewController {
+protocol ViewProtocol: class {
     
-    var presenter: Presenter!
+    var presenter: Presenter! { get set }
     
 }

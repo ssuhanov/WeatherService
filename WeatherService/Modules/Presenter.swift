@@ -10,6 +10,6 @@ import Foundation
 
 class Presenter {
     
-    weak var view: View!
+    weak var view: ViewProtocol!
     
 }

@@ -10,12 +10,7 @@ import Foundation
 
 typealias DetailPresenterConfig = (DetailPresenter?) -> Void
 
-protocol MainPresenterProtocol {
-    func getData()
-    func handleCityWeather(_ cityWeather: CityWeather)
-}
-
-protocol MainViewProtocol: class {
+protocol MainViewProtocol: ViewProtocol {
     func showData(with weatherArray: [CityWeather])
     func showDetailView(_ detailView: DetailViewProtocol, with config: @escaping DetailPresenterConfig)
 }

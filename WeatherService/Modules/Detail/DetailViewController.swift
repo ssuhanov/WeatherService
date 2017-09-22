@@ -8,7 +8,9 @@
 
 import UIKit
 
-class DetailViewController: View, DetailViewProtocol {
+class DetailViewController: UIViewController, DetailViewProtocol {
+    
+    var presenter: Presenter!
 
     var presenterConfig: DetailPresenterConfig!
 
@@ -25,7 +27,7 @@ class DetailViewController: View, DetailViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presenterConfig(presenter as? DetailPresenter)
+        presenterConfig(self.presenter as? DetailPresenter)
         
         configureUI()
     }

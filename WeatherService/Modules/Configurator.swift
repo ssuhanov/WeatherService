@@ -10,7 +10,7 @@ import Foundation
 
 class Configurator {
     
-    static func configure<T: View, U: Presenter>(view: T, presenter: U) {
+    static func configure<T: ViewProtocol, U: Presenter>(view: T, presenter: U) {
         view.presenter = presenter
         presenter.view = view
     }
