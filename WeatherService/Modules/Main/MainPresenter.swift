@@ -8,9 +8,11 @@
 
 import Foundation
 
-class MainPresenter: MainPresenterProtocol {
+class MainPresenter: Presenter {
 
-    weak var view: MainViewProtocol!
+    weak var mainView: MainViewProtocol? {
+        return self.view as? MainViewProtocol
+    }
 
     func handleCityResults(_ cityResults: [JSONDictonary]) {
         var weatherArray = [CityWeather]()
@@ -19,10 +21,8 @@ class MainPresenter: MainPresenterProtocol {
                 weatherArray.append(cityWeather)
             }
         }
-        view.showData(with: weatherArray)
+        self.mainView?.showData(with: weatherArray)
     }
-    
-    // MARK: - MainPresenterProtocol
     
     func getData() {
         let serverAddress = "http://api.openweathermap.org/data/2.5/group"
@@ -38,8 +38,8 @@ class MainPresenter: MainPresenterProtocol {
     }
     
     func handleCityWeather(_ cityWeather: CityWeather) {
-        view.showDetailView(DetailViewController.storyboardInstance()) { presenter in
-            presenter.handleCityWeather(cityWeather)
+        self.mainView?.showDetailView(DetailViewController.storyboardInstance()) { presenter in
+            presenter?.handleCityWeather(cityWeather)
         }
     }
     

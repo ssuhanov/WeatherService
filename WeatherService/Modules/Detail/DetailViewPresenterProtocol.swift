@@ -8,11 +8,7 @@
 
 import Foundation
 
-protocol DetailPresenterProtocol {
-    func handleCityWeather(_ cityWeather: CityWeather)
-}
-
-protocol DetailViewProtocol: class {
+protocol DetailViewProtocol: ViewProtocol {
     var presenterConfig: DetailPresenterConfig! { get set }
     
     func showCity(_ city: String?)

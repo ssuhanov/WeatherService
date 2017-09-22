@@ -22,6 +22,7 @@ class DetailPresenterTest: XCTestCase {
     }
 
     class MockViewController: DetailViewProtocol {
+        var presenter: Presenter!
         var presenterConfig: DetailPresenterConfig!
         
         func showCity(_ city: String?) {

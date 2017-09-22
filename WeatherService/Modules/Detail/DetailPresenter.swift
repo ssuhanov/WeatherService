@@ -8,15 +8,15 @@
 
 import Foundation
 
-class DetailPresenter: DetailPresenterProtocol {
+class DetailPresenter: Presenter {
 
-    weak var view: DetailViewProtocol!
-
-    // MARK: - DetailPresenterProtocol
-
+    weak var detailView: DetailViewProtocol? {
+        return self.view as? DetailViewProtocol
+    }
+    
     func handleCityWeather(_ cityWeather: CityWeather) {
-        view.showCity(cityWeather.city)
-        view.showTemperature(cityWeather.temperatureDescription)
-        view.showWeatherType(cityWeather.weatherType)
+        detailView?.showCity(cityWeather.city)
+        detailView?.showTemperature(cityWeather.temperatureDescription)
+        detailView?.showWeatherType(cityWeather.weatherType)
     }
 }

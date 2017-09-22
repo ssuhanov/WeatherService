@@ -9,8 +9,9 @@
 import UIKit
 
 class DetailViewController: UIViewController, DetailViewProtocol {
+    
+    var presenter: Presenter!
 
-    var presenter: DetailPresenterProtocol!
     var presenterConfig: DetailPresenterConfig!
 
     @IBOutlet weak var cityLabel: UILabel!
@@ -20,14 +21,13 @@ class DetailViewController: UIViewController, DetailViewProtocol {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        let configurator = DetailConfigurator()
-        configurator.configure(self)
+        Configurator.configure(view: self, presenter: DetailPresenter())
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presenterConfig(presenter)
+        presenterConfig(self.presenter as? DetailPresenter)
         
         configureUI()
     }
