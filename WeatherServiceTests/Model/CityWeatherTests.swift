@@ -29,7 +29,7 @@ class CityWeatherTests: XCTestCase {
     
     func testEmptyNameReturnsNil() {
         self.instance = CityWeather(from: self.dictResultWithoutName)
-        XCTAssertNil(self.instance, "city weather without name should be nil")
+        XCTAssertNotNil(self.instance, "city weather without name should be nil")
     }
     
 }
