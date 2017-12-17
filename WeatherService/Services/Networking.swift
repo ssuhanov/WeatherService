@@ -27,9 +27,9 @@ extension Networking {
             return
         }
         
-        serverRequest(request) { response in
-            if response.error == nil,
-                let data = response.data,
+        serverRequest(request) { data, _, error in
+            if error == nil,
+                let data = data,
                 let value = json(from: data),
                 let jsonResult = value as? JSONDictonary {
                 completion?(jsonResult)
@@ -39,7 +39,7 @@ extension Networking {
         }
     }
     
-    static func serverRequest(_ request: URLRequest, andCompletion completion: @escaping (Response) -> Void) {
+    static func serverRequest(_ request: URLRequest, andCompletion completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
         let newTask = URLSession.shared.dataTask(with: request, completionHandler: completion)
         newTask.resume()
     }
