@@ -13,6 +13,12 @@ class MainPresenter: Presenter {
     weak var mainView: MainViewProtocol? {
         return self.view as? MainViewProtocol
     }
+    
+    func handleDictResult(dictResult: JSONDictonary?) {
+        if let cityResults = dictResult?["list"] as? [JSONDictonary] {
+            self.handleCityResults(cityResults)
+        }
+    }
 
     func handleCityResults(_ cityResults: [JSONDictonary]) {
         var weatherArray = [CityWeather]()
@@ -33,9 +39,7 @@ class MainPresenter: Presenter {
             print(statusCode?.rawValue ?? "no status code")
             switch serverResponse {
             case .success(let dictResult):
-                if let cityResults = dictResult?["list"] as? [JSONDictonary] {
-                    self?.handleCityResults(cityResults)
-                }
+                self?.handleDictResult(dictResult: dictResult)
             default:
                 break
             }
