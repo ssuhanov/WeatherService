@@ -13,6 +13,12 @@ class MainPresenter: Presenter {
     weak var mainView: MainViewProtocol? {
         return self.view as? MainViewProtocol
     }
+    
+    func handleDictResult(dictResult: JSONDictonary?) {
+        if let cityResults = dictResult?["list"] as? [JSONDictonary] {
+            self.handleCityResults(cityResults)
+        }
+    }
 
     func handleCityResults(_ cityResults: [JSONDictonary]) {
         var weatherArray = [CityWeather]()
@@ -29,9 +35,13 @@ class MainPresenter: Presenter {
         let parameters: JSONDictonary = ["id" : "2643743,6167865,703448,2950158" as AnyObject,
                                          "appid" : "a9c5d3933c9d14e8699c682c39f5cb9d" as AnyObject,
                                          "units" : "metric" as AnyObject]
-        Networking.dictionaryRequestGET(withURL: serverAddress, parameters: parameters) { [weak self] (dictResult) in
-            if let cityResults = dictResult?["list"] as? [JSONDictonary] {
-                self?.handleCityResults(cityResults)
+        Networking.dictionaryRequestGET(withURL: serverAddress, parameters: parameters) { [weak self] (serverResponse, statusCode) in
+            print(statusCode?.rawValue ?? "no status code")
+            switch serverResponse {
+            case .success(let dictResult):
+                self?.handleDictResult(dictResult: dictResult)
+            default:
+                break
             }
         }
         // get data from server here and call view.showData(...)
