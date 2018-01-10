@@ -8,8 +8,26 @@
 
 import Foundation
 
+enum ServerResponse {
+    case wrongRequest
+    case success (data: JSONDictonary?)
+    case failure (error: Error)
+}
+
+struct StatusCode {
+    var rawValue: Int
+    
+    init?(rawValue: Int?) {
+        guard let rawValue = rawValue else {
+            return nil
+        }
+        
+        self.rawValue = rawValue
+    }
+}
+
 typealias JSONDictonary = [String : AnyObject]
-typealias JSONResultCompletion = (JSONDictonary?) -> Void
+typealias ResponseResultCompletion = (ServerResponse, StatusCode?) -> Void
 typealias Response = (data: Data?, response: URLResponse?, error: Error?)
 
 enum Networking {}
@@ -20,22 +38,25 @@ extension Networking {
     
     static func dictionaryRequestGET(withURL URLString: String,
                                      parameters: JSONDictonary?,
-                                     andCompletion completion: JSONResultCompletion?) {
+                                     andCompletion completion: ResponseResultCompletion?) {
         
         guard let request = requestGET(withURL: URLString, andParameters: parameters) else {
-            completion?(nil)
+            completion?(.wrongRequest, nil)
             return
         }
         
-        serverRequest(request) { data, _, error in
-            if error == nil,
-                let data = data,
-                let value = json(from: data),
-                let jsonResult = value as? JSONDictonary {
-                completion?(jsonResult)
+        serverRequest(request) { data, response, error in
+            let serverResponse: ServerResponse
+            
+            if let error = error {
+                serverResponse = .failure(error: error)
             } else {
-                completion?(nil)
+                serverResponse = .success(data: json(from: data) as? JSONDictonary)
             }
+            
+            let rawValueStatusCode = (response as? HTTPURLResponse)?.statusCode
+            let statusCode = StatusCode(rawValue: rawValueStatusCode)
+            completion?(serverResponse, statusCode)
         }
     }
     
@@ -59,7 +80,11 @@ extension Networking {
         return request
     }
     
-    static func json(from data: Data) -> Any? {
+    static func json(from data: Data?) -> Any? {
+        guard let data = data else {
+            return nil
+        }
+        
         return try? JSONSerialization.jsonObject(with: data, options: [])
     }
     
